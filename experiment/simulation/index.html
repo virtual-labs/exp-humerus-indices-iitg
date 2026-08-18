@@ -254,7 +254,75 @@
     </div>
     <div id="feedback"></div>
 </div>
+<!-- ================= HELP / INFO BUTTON ================= -->
+<button id="info-btn" onclick="document.getElementById('tool-help').classList.add('open')">i</button>
 
+<div id="tool-help">
+    <div id="tool-help-panel">
+        <button id="tool-help-close" onclick="document.getElementById('tool-help').classList.remove('open')">&times;</button>
+
+        <h2>How to Use This Lab</h2>
+
+        <div class="help-section">
+            <h3>General Rules</h3>
+            <ul>
+                <li>Select a measurement from the sidebar first — the correct tool loads automatically, and the instruction line above the display box tells you exactly what to measure for that mode.</li>
+                <li>Each measurement page just shows a live reading as you move the tool — there's no correctness check here. Read the value and <strong>note it down</strong>; you'll need it later.</li>
+                <li>The bone is <strong>locked in place</strong> during most measurements so it can't shift mid-reading. Double-click it to unlock/re-lock if a mode allows repositioning.</li>
+                <li>Take measurements in the order the sidebar lists them — the final Indices step needs the values you recorded from every earlier step.</li>
+                <li>Green/red feedback only appears on the <strong>Indices</strong> page, once you enter your recorded values into the formula boxes there.</li>
+            </ul>
+        </div>
+
+        <div class="help-section">
+            <h3>Osteometric Board <span class="tag">Length measurements</span></h3>
+            <ol>
+                <li>Lay the bone flat against the board with the end you're measuring from touching the <strong>fixed wall</strong>.</li>
+                <li>Drag the <strong>movable wall</strong> until it just touches the far end point of the bone for that measurement (no gap, no overlap).</li>
+                <li>Read the value from the scale or display box and note it down.</li>
+            </ol>
+        </div>
+
+        <div class="help-section">
+            <h3>Sliding Caliper <span class="tag">Width / diameter measurements</span></h3>
+            <ol>
+                <li>Drag the caliper body so the <strong>fixed jaw</strong> touches one side of the point you're measuring.</li>
+                <li>Drag the <strong>movable slider</strong> until the moving jaw just touches the opposite side, along the axis named in the instruction line (e.g. transverse or vertical).</li>
+                <li>Read the value and note it down.</li>
+            </ol>
+            <div class="note">The jaws should just contact the bone surface — don't compress it, and don't leave a gap.</div>
+        </div>
+
+        <div class="help-section">
+            <h3>Tape <span class="tag">Curved / circumference measurements</span></h3>
+            <ol>
+                <li>The tape stays fixed in place — <strong>drag the bone</strong> so the point you're measuring lines up with the tape, not the other way round.</li>
+                <li>Position the bone so the tape sits exactly along the curve or distance named in the instruction line.</li>
+                <li>Read the value and note it down.</li>
+            </ol>
+        </div>
+
+        <div class="help-section">
+            <h3>Goniometer <span class="tag">Angle measurements</span></h3>
+            <ol>
+                <li>Drag the goniometer so its center pivot lines up with the joint or point named in the instruction line.</li>
+                <li>Align the <strong>fixed arm</strong> along the first reference axis (usually the shaft).</li>
+                <li>Drag the <strong>movable arm</strong> along the second reference axis until it matches the angle you're measuring.</li>
+                <li>Read the angle in degrees and note it down.</li>
+            </ol>
+        </div>
+
+        <div class="help-section">
+            <h3>Indices / Calculations <span class="tag">Only page with feedback</span></h3>
+            <ol>
+                <li>Open the Indices page once you've recorded all the raw measurements it needs.</li>
+                <li>Enter your recorded values into each formula box — the result calculates as you type.</li>
+                <li>Each answer box turns <strong style="color:green;">green</strong> automatically if correct, <strong style="color:red;">red</strong> if not. Adjust your input values until every box is green.</li>
+            </ol>
+        </div>
+
+    </div>
+</div>
 <script src="js/humerus.js"></script>
 </body>
 </html>

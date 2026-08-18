@@ -2,37 +2,156 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "The humerus is classified as a:",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Flat bone",
+        "b": "Short bone",
+        "c": "Long bone",
+        "d": "Irregular bone"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "The humerus is not classified as a flat bone.",
+        "b": "The humerus is not classified as a short bone.",
+        "c": "The humerus is a long bone of the upper limb, extending from the shoulder to the elbow.",
+        "d": "The humerus is not classified as an irregular bone."
       },
-      "correctAnswer": "a",
+      "correctAnswer": "c",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "The humerus articulates proximally with the:",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Clavicle",
+        "b": "Scapula",
+        "c": "Radius",
+        "d": "Ulna"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "The clavicle does not directly articulate with the humerus.",
+        "b": "The head of the humerus articulates with the glenoid cavity of the scapula to form the shoulder joint.",
+        "c": "The radius articulates with the distal end of the humerus at the elbow.",
+        "d": "The ulna articulates with the distal end of the humerus at the elbow."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The distal end of the humerus articulates with:",
+      "answers": {
+        "a": "Radius only",
+        "b": "Ulna only",
+        "c": "Radius and ulna",
+        "d": "Scapula and radius"
+      },
+      "explanations": {
+        "a": "The distal humerus articulates with the radius but also articulates with the ulna.",
+        "b": "The distal humerus articulates with the ulna but also articulates with the radius.",
+        "c": "The distal end of the humerus articulates with both the radius and ulna at the elbow joint.",
+        "d": "The scapula does not articulate with the distal end of the humerus."
       },
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The head of the humerus is directed:",
+      "answers": {
+        "a": "Downward and lateral",
+        "b": "Upward, medial and posterior",
+        "c": "Upward, medial and backward",
+        "d": "Downward and medial"
+      },
+      "explanations": {
+        "a": "The head of the humerus is not directed downward and lateral.",
+        "b": "The head is directed upward, medially and slightly backward.",
+        "c": "The head of the humerus is directed upward, medially and backward, allowing it to articulate with the glenoid cavity.",
+        "d": "The head is not directed downward and medial."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The greater tubercle of the humerus is located:",
+      "answers": {
+        "a": "Medially",
+        "b": "Posteriorly",
+        "c": "Laterally",
+        "d": "Inferiorly"
+      },
+      "explanations": {
+        "a": "The greater tubercle is not located medially; the lesser tubercle is positioned more anteriorly and medially.",
+        "b": "The greater tubercle has posterior and lateral surfaces but is primarily located laterally.",
+        "c": "The greater tubercle is a prominent bony projection located on the lateral aspect of the proximal humerus.",
+        "d": "The greater tubercle is not primarily an inferior structure."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The intertubercular groove is also known as:",
+      "answers": {
+        "a": "Deltoid groove",
+        "b": "Bicipital groove",
+        "c": "Radial groove",
+        "d": "Nutrient groove"
+      },
+      "explanations": {
+        "a": "The deltoid tuberosity is a different anatomical structure on the humerus.",
+        "b": "The intertubercular groove is also called the bicipital groove because it contains the tendon of the long head of the biceps brachii.",
+        "c": "The radial groove is located on the posterior surface of the shaft of the humerus.",
+        "d": "The nutrient canal is a separate anatomical feature and is not called the bicipital groove."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The trochlea of the humerus articulates with the:",
+      "answers": {
+        "a": "Radius",
+        "b": "Ulna",
+        "c": "Scapula",
+        "d": "Clavicle"
+      },
+      "explanations": {
+        "a": "The capitulum of the humerus articulates with the head of the radius.",
+        "b": "The trochlea articulates with the trochlear notch of the ulna at the elbow joint.",
+        "c": "The scapula articulates with the proximal head of the humerus, not the trochlea.",
+        "d": "The clavicle does not articulate with the trochlea."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The humerus is important for estimating:",
+      "answers": {
+        "a": "Age",
+        "b": "Sex",
+        "c": "Stature and sex",
+        "d": "Blood group"
+      },
+      "explanations": {
+        "a": "Although some skeletal features can contribute to age assessment, this is not the primary anthropological application referred to here.",
+        "b": "The humerus can provide information useful for sex estimation.",
+        "c": "Measurements and morphological features of the humerus can be useful in estimating stature and sex in forensic and anthropological studies.",
+        "d": "Bones cannot be used to determine an individual's blood group."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The nutrient foramen of the humerus is usually directed:",
+      "answers": {
+        "a": "Towards the elbow",
+        "b": "Towards the shoulder",
+        "c": "Towards the hand",
+        "d": "Horizontally"
+      },
+      "explanations": {
+        "a": "The nutrient canal of the humerus is not usually directed toward the elbow.",
+        "b": "The nutrient foramen of the humerus is usually directed proximally, toward the shoulder.",
+        "c": "The nutrient foramen is not usually directed toward the hand.",
+        "d": "The nutrient canal follows a longitudinal direction rather than being directed horizontally."
+      },
+      "correctAnswer": "b",
       "difficulty": "beginner"
     }
   ]

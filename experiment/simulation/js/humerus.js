@@ -1,7 +1,26 @@
 /* ==============================
    CONFIGURATION
 ============================== */
-const CM_PER_PIXEL = 1 / 20; // 0.05
+//const CM_PER_PIXEL = 1 / 20; // 0.05
+function getScale() {
+    switch (currentMode) {
+
+        case "length":
+            return 0.03846; // calibrated: 700px bone width -> 26.92cm
+
+        case "proximal":
+            return 0.0295;   // gives about 3.78 cm
+
+        case "distal":
+            return 0.0311;
+
+        case "girth":
+            return 0.078;
+
+        default:
+            return 0.05;
+    }
+}
 
 const TARGETS = {
     length:   { val: 26.92, tol: 1,   unit: "cm", instr: "Measure maximum length using osteometric board." },
@@ -78,6 +97,12 @@ function setMode(mode, event) {
 
     document.getElementById("unit").innerText =
         TARGETS[mode]?.unit || "";
+
+    const controlsBox = document.getElementById("controls");
+    if (controlsBox) {
+        controlsBox.style.display =
+            (mode === "length" || mode === "indices") ? "none" : "block";
+    }
 
     document.getElementById("readout").innerText = 0;
     document.getElementById("feedback").innerText = "";
@@ -168,8 +193,7 @@ function spawnTapeNearBone() {
 
     end.style.left = (anchorX + 7 + startWidth) + "px";
     end.style.top = (anchorY - 11) + "px";
-
-    currentReading = startWidth * CM_PER_PIXEL;
+currentReading = startWidth * getScale();
     document.getElementById("readout").innerText = currentReading.toFixed(2);
 }
 
@@ -243,16 +267,17 @@ document.addEventListener("mousemove", e => {
             const bone = document.getElementById("bone").getBoundingClientRect();
             let x = e.clientX - workspace.left;
 
-            const boneStart = 100;
-            const boneEnd = boneStart + bone.height;
+            const boneStart = 120; // matches BONE_POSES.length.left
+            const boneEnd = boneStart + bone.width;
 
             if (x > boneEnd) x = boneEnd;
             if (x < boneStart) x = boneStart;
 
+    
             dragged.style.left = x + "px";
 
             const pixelDistance = x - boneStart;
-            currentReading = pixelDistance * CM_PER_PIXEL;
+           currentReading = pixelDistance * getScale();
 
             document.getElementById("readout").innerText =
                 currentReading.toFixed(2);
@@ -284,7 +309,7 @@ document.addEventListener("mousemove", e => {
 
             const fixedJawX = 40;
             const distancePx = x - fixedJawX;
-            currentReading = distancePx * CM_PER_PIXEL;
+            currentReading = distancePx * getScale();
         }
         else if (dragged.id === "tape-end" && currentMode === "girth") {
 
@@ -305,7 +330,7 @@ document.addEventListener("mousemove", e => {
             const bandWidth = x - (anchorLeft + 7);
             band.style.width = bandWidth + "px";
 
-            currentReading = bandWidth * CM_PER_PIXEL;
+           currentReading = bandWidth * getScale();
 
             const fb = document.getElementById("feedback");
             if (currentReading < 2) {
@@ -572,30 +597,58 @@ function checkIndices() {
 
 function createScale() {
 
-    const scale = document.getElementById("scale");
+    const scale =
+        document.getElementById("scale");
+
     scale.innerHTML = "";
 
-    const PX_PER_CM = 16.3;
+    /* calibrated: tick 0 sits at the fixed wall's face (workspace x=145),
+       wall's contact face reaches the bone's end at workspace x=820
+       (boneStart 120 + bone width 700) -> that point must read 26.93cm */
+    const PX_PER_CM = (820 - 160) / 26.93; // ≈ 25.065
 
-    for (let i = 0; i <= 50; i++) {
+    /* 30 cm scale with 0.1 cm divisions */
+    for (let i = 0; i <= 300; i++) {
 
-        const tick = document.createElement("div");
-        tick.style.left = (i * PX_PER_CM) + "px";
+        const value = i / 10;
+
+        const tick =
+            document.createElement("div");
+
         tick.classList.add("tick");
 
+        tick.style.left =
+            (value * PX_PER_CM) + "px";
+
+        /* Tick types */
+
+        /* Every 1 cm */
         if (i % 10 === 0) {
+
             tick.classList.add("large");
 
-            const label = document.createElement("div");
+            const label =
+                document.createElement("div");
+
             label.classList.add("tick-label");
-            label.style.left = (i * PX_PER_CM - 5) + "px";
-            label.innerText = i;
+
+            label.style.left =
+                (value * PX_PER_CM - 6) + "px";
+
+            label.innerText = value.toFixed(0);
 
             scale.appendChild(label);
+        }
 
-        } else if (i % 5 === 0) {
+        /* Every 0.5 cm */
+        else if (i % 5 === 0) {
+
             tick.classList.add("medium");
-        } else {
+        }
+
+        /* Every 0.1 cm */
+        else {
+
             tick.classList.add("small");
         }
 

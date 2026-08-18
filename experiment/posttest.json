@@ -2,35 +2,154 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "Maximum length of humerus is measured between:",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Greater tubercle and capitulum",
+        "b": "Head of humerus and trochlea",
+        "c": "Surgical neck and olecranon fossa",
+        "d": "Lesser tubercle and lateral epicondyle"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect. The greater tubercle is not the highest point used for maximum length measurement.",
+        "b": "Correct. Maximum length of the humerus is measured from the highest point on the head of the humerus to the lowest point on the trochlea using an osteometric board.",
+        "c": "Incorrect. These landmarks are not used for measuring maximum length.",
+        "d": "Incorrect. These landmarks do not represent the maximum anatomical length."
       },
-      "correctAnswer": "a",
+      "correctAnswer": "b",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Instrument used to measure maximum humerus length is:",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Sliding caliper",
+        "b": "Spreading caliper",
+        "c": "Osteometric board",
+        "d": "Measuring tape"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "Incorrect. Sliding calipers are used for smaller linear measurements.",
+        "b": "Incorrect. Spreading calipers are used for measuring distances between curved surfaces.",
+        "c": "Correct. An osteometric board is the standard instrument for measuring the maximum length of long bones.",
+        "d": "Incorrect. Measuring tapes are not suitable for precise osteometric measurements."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Breadth of proximal epiphysis of humerus is measured between:",
+      "answers": {
+        "a": "Lesser tubercle and head",
+        "b": "Head and deltoid tuberosity",
+        "c": "Head and greater tubercle",
+        "d": "Surgical neck and shaft"
+      },
+      "explanations": {
+        "a": "Incorrect. These landmarks do not represent the maximum proximal breadth.",
+        "b": "Incorrect. The deltoid tuberosity lies on the shaft.",
+        "c": "Correct. The maximum breadth of the proximal epiphysis is measured between the head and the greater tubercle.",
+        "d": "Incorrect. These points are not used for proximal epiphyseal breadth."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Best instrument for measuring proximal epiphyseal breadth is:",
+      "answers": {
+        "a": "Measuring tape",
+        "b": "Sliding caliper",
+        "c": "Osteometric board",
+        "d": "Goniometer"
+      },
+      "explanations": {
+        "a": "Incorrect. Measuring tapes are not sufficiently precise.",
+        "b": "Correct. A sliding caliper is used to accurately measure linear breadths of bones.",
+        "c": "Incorrect. An osteometric board is mainly used for measuring bone length.",
+        "d": "Incorrect. A goniometer measures angles, not breadth."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Breadth of distal epiphysis of humerus is measured between:",
+      "answers": {
+        "a": "Capitulum and trochlea",
+        "b": "Olecranon fossa margins",
+        "c": "Medial and lateral epicondyles",
+        "d": "Shaft margins"
+      },
+      "explanations": {
+        "a": "Incorrect. These are articular surfaces rather than the widest points.",
+        "b": "Incorrect. The olecranon fossa is not used for this measurement.",
+        "c": "Correct. Distal epiphyseal breadth is measured as the maximum distance between the medial and lateral epicondyles.",
+        "d": "Incorrect. The shaft is not part of the distal epiphysis."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which instrument is MOST suitable for measuring distal epiphyseal breadth using points apart?",
+      "answers": {
+        "a": "Sliding caliper",
+        "b": "Spreading caliper",
+        "c": "Measuring tape",
+        "d": "Osteometric board"
+      },
+      "explanations": {
+        "a": "Incorrect. Sliding calipers are generally used when jaws can contact parallel surfaces.",
+        "b": "Correct. A spreading caliper is ideal for measuring distances between projecting anatomical points such as the epicondyles.",
+        "c": "Incorrect. Measuring tapes are not suitable for precise osteometric measurements.",
+        "d": "Incorrect. Osteometric boards measure maximum bone length."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Least girth of shaft of humerus is measured using:",
+      "answers": {
+        "a": "Sliding caliper",
+        "b": "Spreading caliper",
+        "c": "Measuring tape",
+        "d": "Goniometer"
+      },
+      "explanations": {
+        "a": "Incorrect. Sliding calipers measure linear distances, not circumference.",
+        "b": "Incorrect. Spreading calipers measure distances between curved points.",
+        "c": "Correct. The least circumference (girth) of the shaft is measured using a measuring tape.",
+        "d": "Incorrect. A goniometer measures angles."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Condylo-diaphysial angle is the angle between:",
+      "answers": {
+        "a": "Shaft and head of humerus",
+        "b": "Shaft and surgical neck",
+        "c": "Shaft axis and condylar axis",
+        "d": "Head axis and neck axis"
+      },
+      "explanations": {
+        "a": "Incorrect. This describes the neck-shaft relationship.",
+        "b": "Incorrect. The surgical neck is not used in this angle.",
+        "c": "Correct. The condylo-diaphysial angle is formed between the longitudinal axis of the shaft and the condylar axis.",
+        "d": "Incorrect. These axes define a different anatomical relationship."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Humeral torsion angle represents:",
+      "answers": {
+        "a": "Length of humerus",
+        "b": "Curvature of shaft",
+        "c": "Twisting of humeral shaft",
+        "d": "Breadth of epiphysis"
+      },
+      "explanations": {
+        "a": "Incorrect. Torsion is unrelated to bone length.",
+        "b": "Incorrect. Curvature and torsion are different anatomical characteristics.",
+        "c": "Correct. The humeral torsion angle represents the rotational twist between the proximal and distal ends of the humerus.",
+        "d": "Incorrect. Torsion does not measure epiphyseal breadth."
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
