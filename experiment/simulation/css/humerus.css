@@ -1,0 +1,701 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+    background: #cac2c2;
+}
+
+/* Sidebar */
+#sidebar {
+    width: 250px;
+    background: #1a252f;
+    color: white;
+    padding: 20px;
+}
+
+.nav-btn {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    background: #34495e;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.nav-btn.active,
+.nav-btn:hover {
+    background: #16a085;
+}
+
+/* Workspace */
+#workspace {
+    flex: 1;
+    position: relative;
+    background: #2c3e50;
+}
+
+#bone {
+    position: absolute;
+    width: 700px;
+    height: auto;
+
+    left: 100px;
+    top: 250px;
+
+    pointer-events: auto;
+    cursor: default;
+    user-select: none;
+    z-index: 1;
+    transition: none;
+}
+
+/* Osteometric Board */
+.board-wall {
+    position: absolute;
+    top: 50px;
+    height: 600px;
+    background: #5d4037;
+    z-index: 3;
+}
+
+#fixed-wall {
+    width: 45px;
+    left: 100px;
+    z-index: 3;
+}
+
+#movable-wall {
+    width: 40px;
+    left: 600px;
+    cursor: col-resize;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Calipers */
+#tool-caliper,
+#tool-tape,
+#tool-goniometer {
+    display: none;
+}
+
+/* =========================
+   REALISTIC CALIPER
+========================= */
+
+#tool-caliper {
+    position: absolute;
+    width: 900px;
+    height: 220px;
+    left: 120px;
+    top: 180px;
+}
+
+#caliper-body {
+    position: relative;
+    width: 700px;
+    height: 120px;
+}
+
+#caliper-ruler {
+    position: absolute;
+    top: 58px;
+    left: 60px;
+    width: 560px;
+    height: 8px;
+    background: linear-gradient(to bottom, #dcdcdc, #9e9e9e);
+    border: 1px solid #555;
+}
+
+.fixed-jaw {
+    position: absolute;
+    left: 40px;
+    top: 10px;
+}
+
+.slider {
+    position: absolute;
+    left: 350px;
+    top: 0;
+    width: 80px;
+    height: 120px;
+    cursor: ew-resize;
+}
+
+.slider-body {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 35px;
+    height: 80px;
+    background: linear-gradient(to bottom, #cfcfcf, #8c8c8c);
+    border: 2px solid #555;
+    border-radius: 6px;
+}
+
+.jaw {
+    position: absolute;
+    width: 40px;
+    height: 100px;
+}
+
+.jaw-top {
+    position: absolute;
+    width: 12px;
+    height: 45px;
+    background: #c0c0c0;
+    border: 2px solid #555;
+    left: 0;
+    top: 0;
+}
+
+.jaw-bottom {
+    position: absolute;
+    width: 12px;
+    height: 55px;
+    background: #c0c0c0;
+    border: 2px solid #555;
+    left: 0;
+    bottom: 0;
+}
+
+.movable-jaw {
+    position: absolute;
+    left: 0;
+    top: 10px;
+}
+
+#caliper-ruler::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        to right,
+        transparent 0px,
+        transparent 9px,
+        black 9px,
+        black 10px
+    );
+}
+
+.caliper-scale {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.cal-tick {
+    position: absolute;
+    bottom: 0;
+    width: 1px;
+    background: black;
+}
+
+.cal-tick.small { height: 10px; }
+.cal-tick.medium { height: 16px; }
+.cal-tick.large { height: 24px; width: 2px; }
+
+.cal-label {
+    position: absolute;
+    top: -18px;
+    font-size: 11px;
+    color: black;
+    font-weight: bold;
+}
+
+/* =========================
+   REALISTIC MEASURING TAPE
+   (used for shaft girth)
+========================= */
+
+#tool-tape {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    pointer-events: none; /* only the child elements themselves are interactive */
+}
+
+#tool-tape > * {
+    pointer-events: auto;
+}
+
+/* the fixed "wrap point" pin on the shaft */
+#tape-anchor {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    margin-left: -7px;
+    margin-top: -7px;
+    background: radial-gradient(circle at 35% 35%, #666, #111);
+    border: 2px solid #000;
+    border-radius: 50%;
+    z-index: 22;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+/* the tape band that stretches out from the anchor */
+#tape-band {
+    position: absolute;
+    height: 26px;
+    width: 0px;
+    background: linear-gradient(to bottom, #ffe680 0%, #f5c518 50%, #e0ac00 100%);
+    border-top: 1px solid #b38f00;
+    border-bottom: 1px solid #b38f00;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.35);
+    z-index: 21;
+    overflow: hidden;
+}
+
+/* tick marks printed on the tape, like a real cloth tape */
+#tape-band::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        to right,
+        transparent 0px,
+        transparent 15px,
+        #333 15px,
+        #333 16px
+    );
+}
+
+#tape-band::after {
+    content: "cm";
+    position: absolute;
+    left: 4px;
+    top: 3px;
+    font-size: 9px;
+    font-weight: bold;
+    color: #4a3900;
+}
+
+/* the draggable metal end-tab you pull to size the loop */
+#tape-end {
+    position: absolute;
+    width: 22px;
+    height: 34px;
+    margin-top: -4px;
+    cursor: ew-resize;
+    z-index: 23;
+}
+
+.tape-tab {
+    width: 22px;
+    height: 34px;
+    background: linear-gradient(to bottom, #eaeaea, #999);
+    border: 2px solid #555;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.35);
+}
+
+/* Tape */
+#tape-ring {
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    border: 3px dashed orange;
+    border-radius: 50%;
+    cursor: move;
+}
+
+#tape-label {
+    position: absolute;
+    top: -25px;
+    left: 20px;
+    background: orange;
+    color: white;
+    padding: 2px 6px;
+}
+
+/* =========================
+   REALISTIC GONIOMETER
+========================= */
+
+#tool-goniometer {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    display: none;
+    z-index: 30;
+}
+
+#goniometer {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    left: 320px;
+    top: 180px;
+    cursor: move;
+}
+
+#gonio-protractor {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid rgba(80,80,80,0.8);
+    background: radial-gradient(circle, rgba(255,255,255,0.18), rgba(255,255,255,0.05));
+    backdrop-filter: blur(1px);
+    box-shadow: inset 0 0 15px rgba(255,255,255,0.25), 0 4px 10px rgba(0,0,0,0.25);
+    overflow: hidden;
+}
+
+#gonio-scale {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.gonio-center {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: #111;
+    border-radius: 50%;
+    left: 80px;
+    top: 80px;
+    z-index: 50;
+}
+
+.gonio-arm {
+    position: absolute;
+    width: 140px;
+    height: 6px;
+    left: 90px;
+    top: 87px;
+    border-radius: 4px;
+    background: linear-gradient(to bottom, #d9d9d9, #8c8c8c);
+    border: 1px solid #555;
+    transform-origin: left center;
+    z-index: 40;
+}
+
+.fixed-arm { transform: rotate(0deg); }
+.movable-arm { transform: rotate(45deg); cursor: grab; }
+
+#gonio-scale div { user-select: none; }
+
+.gonio-tick {
+    position: absolute;
+    width: 2px;
+    background: rgba(0,0,0,0.75);
+    transform-origin: center bottom;
+    z-index: 5;
+}
+
+.gonio-label {
+    position: absolute;
+    font-size: 10px;
+    color: #111;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+    pointer-events: none;
+}
+
+/* Controls */
+#controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 6px;
+    width: 300px;
+    z-index: 50;
+}
+
+.display-box {
+    font-size: 24px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.btn-check {
+    width: 100%;
+    padding: 10px;
+    background: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#scale {
+    position: absolute;
+    top: 10px;
+    left: 145px;
+    width: 900px;
+    height: 40px;
+    background: #f5deb3;
+    border: 2px solid #333;
+}
+
+.tick {
+    position: absolute;
+    bottom: 0;
+    width: 1px;
+    background: black;
+}
+
+.tick.small { height: 10px; }
+.tick.medium { height: 20px; }
+.tick.large { height: 30px; }
+
+.tick-label {
+    position: absolute;
+    bottom: -20px;
+    font-size: 12px;
+}
+
+#board-surface {
+    position: absolute;
+    top: 45px;
+    left: 145px;
+    height: 600px;
+    width: 900px;
+    background: linear-gradient(to bottom, #d7ccc8, #bcaaa4);
+    border-top: 2px solid #8d6e63;
+    border-bottom: 2px solid #8d6e63;
+    z-index: 0;
+}
+
+/* =========================
+   LAYER FIXES
+========================= */
+
+#bone { z-index: 1; }
+#tool-caliper { z-index: 20; }
+
+#caliper-body,
+#caliper-slider,
+#caliper-ruler,
+.slider-body,
+.jaw {
+    z-index: 25;
+}
+
+#tool-goniometer { z-index: 20; }
+
+/* =========================
+   FEMUR/HUMERUS INDICES STYLING
+========================= */
+
+#tool-indices {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.25);
+    z-index: 100;
+}
+
+#tool-indices h2 {
+    margin-top: 0;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.index-block {
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+}
+
+.index-block h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #34495e;
+}
+
+.formula-title {
+    margin-bottom: 12px;
+    padding: 10px 14px;
+    background: #eef3f7;
+    border-left: 5px solid #16a085;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.formula-text {
+    font-weight: normal;
+    color: #34495e;
+}
+
+.formula {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.fraction {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.fraction .top {
+    display: block;
+    border-bottom: 2px solid black;
+    padding: 8px;
+}
+
+.fraction .bottom {
+    display: block;
+    padding: 8px;
+}
+
+#tool-indices input {
+    width: 100px;
+    padding: 8px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #999;
+    border-radius: 6px;
+}
+
+#tool-indices input[readonly] {
+    background: #ecf0f1;
+    font-weight: bold;
+    color: #2c3e50;
+}
+/* =========================
+   HELP / INFO BUTTON + MODAL
+========================= */
+
+#info-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #16a085;
+    color: white;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 200;
+}
+#info-btn:hover {
+    background: #138d75;
+}
+
+#tool-help {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 150;
+    align-items: center;
+    justify-content: center;
+}
+#tool-help.open {
+    display: flex;
+}
+
+#tool-help-panel {
+    background: #ffffff;
+    width: 760px;
+    max-width: 92vw;
+    max-height: 88vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    padding: 30px 34px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.35);
+    position: relative;
+}
+
+#tool-help-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    background: #eee;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#tool-help-panel h2 {
+    margin-top: 0;
+    color: #1a252f;
+    border-bottom: 3px solid #16a085;
+    padding-bottom: 10px;
+}
+
+.help-section {
+    margin-bottom: 22px;
+    padding: 16px 18px;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-left: 5px solid #16a085;
+    border-radius: 8px;
+}
+.help-section h3 {
+    margin-top: 0;
+    color: #34495e;
+    font-size: 16px;
+}
+.help-section ol,
+.help-section ul {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+}
+.help-section li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    background: #34495e;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.note {
+    background: #eef3f7;
+    border-left: 4px solid #2980b9;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-top: 10px;
+}
