@@ -1,0 +1,1 @@
+AIM-To measure the humerus and study its important anatomical dimensions.
